@@ -1,0 +1,11 @@
+{
+  "name": "ango",
+  "version": "0.0.1",
+  "description": "SHA-256 Encryptor",
+  "main": "dist/src/angoka.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NozzaVevo",
+  "license": "ISC"
+}
