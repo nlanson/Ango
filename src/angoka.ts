@@ -1,13 +1,22 @@
 import { VevoAngo } from './algorithms/VevoAngo';
 
 export class Angoka {
-    static VevoAngo(): (e: string) => string {
-        const a = (b: string): string => {
-            let c = new VevoAngo(b);
-            let d = c.compute();
-            return d;
+    //This function returns a function that returns a number.
+    static VevoAngo(): (packInput: string) => number {
+        const func = (userInput: string): number => {
+            let hashClass = new VevoAngo(userInput);
+            let output = hashClass.compute();
+            return output;
         }
 
-        return a;
+        return func;
+    }
+
+    static noHash(): (packInput: string) => string {
+        const func = (userInput: string): string => {
+            return userInput;
+        }
+
+        return func;
     }
 }

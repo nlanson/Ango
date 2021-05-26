@@ -4,5 +4,5 @@ export default abstract class BaseEncryptorClass {
         public input: string
     ) { }
 
-    abstract compute(): string;
+    abstract compute(): any;
 }
