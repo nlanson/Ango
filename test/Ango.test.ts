@@ -1,32 +1,37 @@
+//Import testing dependencies
+import 'mocha';
+import { expect, assert } from 'chai';
+
+//Import module to test
 import { Angoka } from '../src/angoka';
 
+describe('noHash check', () => {
+    it('Returns the input parameter', () => {
+        let input: string = 'Testinput123';
+        let result = Angoka.noHash()(input);
 
-//Example with 100 strings.
-for ( let i=0; i<100; i++ ) {
-    
-    //Generate non-Zero random number.
-    let e = (): number => {
-        let f: boolean = false;
-        let n: number = 0;
-        while ( !f ) {
-            n = Math.floor(Math.random()*26);
-            if ( n > 5 ) {
-                f = true
-            }
+        expect(result).to.equal(input);
+    });
+});
+
+describe('VevoAngo encryption checks', () => {
+    it(`Doesn't return the input parameter`, () => {
+        let input: string = 'Testinput123';
+        let result = Angoka.VevoAngo()(input);
+
+        expect(result).to.not.equal(input);
+    });
+
+    it('Algorithm consistently generates same hash', () => {
+        let prompt: Array<string> = ['nxcpxwpjn', 'jqeimz', 'wswrda'];
+        let expected: Array<number> = [-1578157826, -1152806120, -778235532];
+
+        assert(prompt.length == expected.length, 'Test dictionary lengths are equal.');
+
+        for ( let i=0; i<prompt.length; i++ ) {
+            let result = Angoka.VevoAngo()(prompt[i]);
+            assert(result == expected[i], 'Hash is consistent');
         }
-        return n;
-    };
-    let r: number = e();
+    });
+});
 
-
-    //Generate string of length determined by the generated number.
-    let s: string = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, r);
-
-
-    //Pass random string into VevoAngo algo.
-    let a = Angoka.VevoAngo()(s);
-
-
-    //Log Input -> Output.
-    console.log(`${s} -> ${a}`);
-}

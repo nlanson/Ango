@@ -1,11 +1,19 @@
 {
   "name": "ango",
   "version": "0.0.1",
-  "description": "SHA-256 Encryptor",
+  "description": "VevoAngo Encryptor",
   "main": "dist/src/angoka.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register ./test/*.test.ts"
   },
   "author": "NozzaVevo",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.2.18",
+    "@types/mocha": "^8.2.2",
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0",
+    "ts-node": "^10.0.0"
+  }
 }
